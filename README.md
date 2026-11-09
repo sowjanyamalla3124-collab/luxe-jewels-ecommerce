@@ -1,54 +1,53 @@
 # LuxeJewels - Premium Imitation Jewellery E-Commerce
 
-## Architecture
+## Implemented Features (Next Phases Complete)
 
-- **Frontend**: Next.js App Router (JavaScript), Tailwind CSS, Framer Motion
-- **Backend**: Next.js API Routes
-- **Database**: PostgreSQL + Prisma ORM
-- **Storage**: Cloudinary (recommended)
-- **Payments**: Razorpay
+### Authentication
+- Register + Login with JWT + bcrypt
+- Role-based (CUSTOMER / ADMIN)
+- Protected routes via `getUserFromRequest`
 
-## Folder Structure
+### Product Management
+- Full CRUD APIs (`/api/products`, `/api/products/[id]`)
+- Category support
+- Admin-only create/update/delete
 
-```
-src/
-├── app/
-│   ├── page.js              # Homepage
-│   ├── products/page.js     # Product listing
-│   ├── admin/page.js        # Admin dashboard
-│   ├── api/products/route.js
-│   └── layout.js
-├── components/
-│   ├── layout/Header.js, Footer.js
-│   └── product/ProductCard.js
-├── prisma/schema.prisma     # Database schema
-└── lib/                     # Utilities
-```
+### Cart & Orders
+- Cart add/remove/list (`/api/cart`)
+- Create order + Razorpay order (`/api/orders`)
+- Payment signature verification (`/api/orders/verify`)
+
+### Bulk Import
+- Excel/CSV upload via `/api/admin/import`
+- Upsert by SKU
+- Success/failed counts + error report
+
+### Admin
+- Order status management (`/api/admin/orders`)
+- Bulk import UI connected to real API
+
+### Frontend
+- Login / Register pages store token in localStorage
+- Products page fetches from API
+- Cart page with Razorpay checkout flow
+- Admin import page with real upload
 
 ## Setup
 
-1. `cd jewellery-store`
-2. `npm install`
-3. Create `.env` with `DATABASE_URL` and Razorpay keys
-4. `npx prisma generate && npx prisma db push`
-5. `npm run dev`
+```bash
+git clone https://github.com/sowjanyamalla3124-collab/luxe-jewels-ecommerce.git
+cd luxe-jewels-ecommerce
+npm install
+cp .env.example .env
+# fill DATABASE_URL, JWT_SECRET, RAZORPAY_*, CLOUDINARY_*
+npx prisma generate
+npx prisma db push
+npm run dev
+```
 
-## Features Implemented (Core)
-
-- Premium luxury UI with gold/ivory palette
-- Responsive product cards with hover animations
-- Homepage with hero and new arrivals
-- Admin dashboard stats
-- Prisma schema for Users, Products, Orders, ImportJobs, etc.
-- Sample API routes
-
-## Next Steps for Full Implementation
-
-1. Authentication (JWT + OTP + Google)
-2. Full product CRUD with image upload (Cloudinary)
-3. Cart, Wishlist, Checkout with Razorpay
-4. Bulk import engine (xlsx, csv, pdf parsing)
-5. Admin product management with drag-drop images
-6. Order management and reports
-
-This is a production-oriented foundation. Expand each module following the requirements.
+## Remaining (optional next)
+- Cloudinary multi-image upload UI
+- OTP / Google login
+- Wishlist persistence
+- Reports & analytics charts
+- Full product variant management

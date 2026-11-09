@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --ivory: #FFFFF0;
+  --champagne: #F7E7CE;
+  --gold: #D4AF37;
+  --charcoal: #2C2C2C;
+  --beige: #F5F5DC;
+}
+
+@theme inline {
+  --color-ivory: var(--ivory);
+  --color-champagne: var(--champagne);
+  --color-gold: var(--gold);
+  --color-charcoal: var(--charcoal);
+  --color-beige: var(--beige);
+}
+
+body {
+  background-color: var(--ivory);
+  color: var(--charcoal);
+}
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
